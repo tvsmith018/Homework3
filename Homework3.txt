@@ -1,0 +1,24 @@
+Terrance V. Smith
+April 25, 2022
+
+The swift framework implements Reference Types and Value Types. Swift allows us to define 
+custom value types by using struct and enum keywords, class, delegate and interface are 
+for reference types. Primitive types, like byte, char, short, int and long are value 
+types, but developers can’t define custom primitive types. In swift primitive types are 
+also value types, but does not expose a possibility to define custom value types for 
+developers.
+
+Value Types and Reference Types are very different in terms of performance 
+characteristics:
+
+-  Every instance of a reference type has two extra fields used internally by CLR.
+-  Value Types have no hidden overhead, so they have better data locality.
+-  Reference Types are managed by GC. It tracks the references, offers fast allocation 
+   and expensive, non-deterministic deallocation.
+-  Whenever a reference is required value types are being boxed. Boxing is expensive, 
+   adds an extra pressure for the GC. You should avoid boxing if you can.
+-  By using generic constraints we can avoid boxing and even de-virtualize interface 
+   method calls for Value Types!
+-  Value Types are passed to and returned from methods by Value. So by default, they are 
+   copied all the time.
+   
